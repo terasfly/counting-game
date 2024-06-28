@@ -50,7 +50,7 @@ function randomFirstNumber() {
     let max = level * levelMultiplier;
     let num1 = Math.floor(Math.random() * (max - min + 1)) + min;
     first = num1;
-    firstNumber.textContent = first;
+    firstNumber.value = first;
 }
 
 function randomSecondNumber() {
@@ -58,7 +58,7 @@ function randomSecondNumber() {
     let max = level * levelMultiplier;
     let num2 = Math.floor(Math.random() * (max - min + 1)) + min;
     second = num2;
-    secondNumber.textContent = second;
+    secondNumber.value = second;
 }
 
 function generateNumbers() {
@@ -76,6 +76,7 @@ function checkAnswer() {
         answerInput.value = '';
         checkButton.style.background = 'green';
         addStar();
+        checkButton.style.color = 'yellow';
     } else {
         checkButton.style.background = 'red';
         checkButton.style.color = 'white';
@@ -88,8 +89,8 @@ function addStar() {
         const starImage = document.createElement('img');
         starImage.src = 'star.png';
         starImage.alt = 'Star';
-        starImage.width = 100;
-        starImage.height = 100;
+        starImage.width = 10;
+        starImage.height = 10;
         starImage.style.borderRadius = '20px';
         stars[correctAnswers].appendChild(starImage);
         correctAnswers++;
