@@ -102,9 +102,11 @@ h3 {
     transform: translate(-50%, -50%);
     font-size: 2em;
     font-weight: bold;
+    color: #006400
 }
 
 .answer .number {
+    padding-left: 10px;
     font-size: 1.5em;
 }
 
@@ -237,9 +239,13 @@ h1 {
         font-size: 28px;
         margin-bottom: 15px;
     }
+    .image {
+        width: 88px;
+        height: 88px;
+    }
     img {
-        width: 80px;
-        height: 80px;
+        width: 50px;
+        height: 50px;
     }
     .game__play {
         width: 367px;
