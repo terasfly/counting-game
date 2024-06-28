@@ -95,34 +95,59 @@ h3 {
     text-align: center;
 }
 
+.answer .number {
+    /* padding-left: 10px; */
+    /* font-size: 23px; */
+}
+
 .number {
     position: absolute;
     top: 42%;
+    width: 68px;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2em;
+    font-size: 53px;
     font-weight: bold;
-    color: #006400
-}
-
-.answer .number {
-    padding-left: 10px;
-    font-size: 1.5em;
+    color: #006400;
+    /* padding-left: 15px; */
 }
 
 input {
-    width: 30px;
+    width: 60px;
+    /* Increased width for better visibility */
+    height: 40px;
+    /* Added height to make it square */
     background: yellow;
     border: none;
-    border-radius: 29px;
+    border-radius: 50%;
+    /* Changed to 50% for a perfect circle */
     outline: none;
-    padding: 2px;
+    text-align: center;
+    font-size: 16px;
+    /* Added font size for consistency */
+    line-height: 40px;
+    /* Added line-height equal to height */
+    padding: 0;
+    /* Remove any padding */
+    margin: 0;
+    /* Remove any margin */
+    vertical-align: middle;
+    /* Align vertically in the middle */
+}
+
+input {
+    width: 64px;
+    height: 64px;
+    line-height: 60px;
+    font-size: 17px;
+    /* other properties remain the same */
 }
 
 h1 {
+    text-align: center;
     color: rgb(92, 14, 44);
     font-size: 100px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     background: rgb(182, 123, 123);
     border-radius: 20px;
     padding: 20px
@@ -213,6 +238,8 @@ h1 {
 
 .star img {
     animation: spin 1s linear;
+    height: 100px;
+    width: 100px;
 }
 
 @keyframes spin {
@@ -254,9 +281,13 @@ h1 {
     .stars {
         width: 345px;
     }
+    .star img {
+        width: 50px;
+        height: 50px;
+    }
     .star {
-        width: 40px;
-        height: 40px;
+        width: 49px;
+        height: 49px;
     }
     .operator {
         font-size: 70px;
@@ -265,14 +296,13 @@ h1 {
         display: none;
     }
     .number {
-        font-size: 15px;
+        font-size: 29px;
         top: 40%;
+        height: 40px;
+        width: 40px;
         /* font-size: 25px; */
     }
     input .number {
         font-size: 25px;
-    }
-    .stars {
-        gap: 37px;
     }
 }
