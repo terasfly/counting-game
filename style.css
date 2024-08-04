@@ -2,20 +2,24 @@ html,
 body {
     margin: 0;
     padding: 0;
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
 }
 
 .game {
+    /* height: 100vh; */
     height: 100vh;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: url('backgroundNumbersGame.png') no-repeat center center;
+    background: url('backgroundWebP.webp') no-repeat center center;
     background-size: cover;
     width: 100%;
+}
+
+.game__inside {
+    margin: 0;
 }
 
 h2 {
@@ -150,7 +154,7 @@ h1 {
     /* text-transform: uppercase; */
     background: rgb(182, 123, 123);
     border-radius: 20px;
-    padding: 20px
+    padding: 10px
 }
 
 .game__level {
@@ -207,6 +211,44 @@ h1 {
 }
 
 
+/* buttons */
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    /* background: red; */
+    padding: 10px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#resetButton {
+    margin-top: 50px;
+    padding: 14px;
+    font-size: 25px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background: yellow;
+    color: red;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    /* Pridedame sklandų perėjimą */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#resetButton:hover {
+    transform: scale(1.05);
+    /* Padidiname mygtuką šiek tiek */
+    background-color: #1df709bd;
+    /* Pakeičiame fono spalvą šviesesnę geltoną */
+}
+
+
 /* starts */
 
 .stars {
@@ -258,13 +300,28 @@ h1 {
 @media only screen and (max-width: 844px) {
     .game {
         min-height: 100vh;
+        display: flex;
+        flex-direction: row;
+        align-items: start;
     }
     h1 {
-        font-size: 37px;
+        font-size: 30px;
+        padding: 17px;
+        display: flex;
+        align-items: center;
     }
     .game__levels {
         font-size: 28px;
         margin-bottom: 15px;
+        text-align: center;
+        padding: 10px;
+        width: 100px;
+    }
+    .game__inside {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .image {
         width: 88px;
