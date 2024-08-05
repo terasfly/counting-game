@@ -16,7 +16,7 @@ let first = 0; // Pirmas skaičius sudėčiai
 let second = 0; // Antras skaičius sudėčiai
 let correctAnswers = 0; // Teisingų atsakymų skaičius
 let level = 1; // Dabartinis žaidimo lygis
-const levelUp = 3; // Naudojamas apskaičiuoti skaičių diapazoną kiekviename lygyje
+const levelUp = 4; // Naudojamas apskaičiuoti skaičių diapazoną kiekviename lygyje
 
 // Šis objektas susieja kiekvieną lygį su fono paveikslėliu.
 const backgroundImages = {
