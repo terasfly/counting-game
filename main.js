@@ -9,6 +9,8 @@ const topStage = document.querySelector('.top__stage');
 const resetButton = document.getElementById('resetButton');
 const game = document.querySelector('.game');
 
+// const digit = document.querySelectorAll('.digit')
+
 // Čia nustatomi pradiniai kintamieji žaidimo logikai.
 let first = 0; // Pirmas skaičius sudėčiai
 let second = 0; // Antras skaičius sudėčiai
@@ -78,6 +80,21 @@ generateNumbers();
 
 // Ši funkcija tikrina vartotojo atsakymą. Jei atsakymas teisingas, ji atnaujina žaidimą ir prideda žvaigždutę. 
 // Jei neteisingas, ji pakeičia mygtuko spalvą į raudoną.
+
+
+
+const digitElements = document.querySelectorAll('.digit');
+
+digitElements.forEach(element => {
+    element.addEventListener('click', (event) => {
+        const number = event.target.textContent.trim()
+        answerInput.value = +number
+    })
+});
+
+
+
+
 function checkAnswer() {
     let userAnswer = parseInt(answerInput.value);
     let correctAnswer = first + second;
@@ -94,6 +111,19 @@ function checkAnswer() {
     }
 }
 
+// function addAnswer(event) {
+//     const digit = document.querySelectorAll('.digit')
+
+//     const clickNumber = Number(event.target)
+//     digit.forEach(element => {
+//         const text = Number(element.textContent.trim())
+//         console.log(text)
+
+
+//     });
+
+// }
+// addAnswer()
 // Ši funkcija prideda žvaigždutę už kiekvieną teisingą atsakymą. 
 // Kai surenkamos visos žvaigždutės, ji perkelia žaidėją į kitą lygį arba baigia žaidimą.
 function addStar() {
