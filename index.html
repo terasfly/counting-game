@@ -9,64 +9,100 @@
 </head>
 
 <body>
-    <div class="game"> 
-          <div class="game__inside">
-        <h1>Laura's Math Challenge<span class="game__level"></span></h1>
-        <div class="game__levels">
-            Level-1
-        </div>
-        <div class="score">
-            <div class="score__top">
-                <h3>Top Level :<span class="top__stage">0</span></h3>
-            </div>
-        </div>
-        <div class="game__play">
+    <div class="game">
+        <div class="game__inside">
 
-            <div class="first__number">
-                <img class="image" src="flower.png" alt="" width="300px" height="300px">
-                <!-- <span class="number" id="firstNumber">0</span> -->
-                <input type="text" class="number" id="firstNumber">
+
+            <h1>Laura's Math Challenge<span class="game__level"></span></h1>
+
+
+            <div class="game__levels">
+                Level-1
             </div>
-            <div class="adding">
-                <span class="operator">+</span>
+
+
+
+            <div class="score">
+                <div class="score__top">
+                    <h3>Top Level :<span class="top__stage">0</span></h3>
+                </div>
             </div>
-            <div class="second__number">
-                <img class="image" src="flower.png" alt="" width="300px" height="300px">
-                <!-- <span class="number" id="secondNumber">0</span> -->
-                <input type="text" class="number" id="secondNumber">
+
+
+
+
+            <div class="game__play">
+
+                <div class="first__number">
+                    <img class="image" src="flowerWebP.webp" alt="" width="300px" height="300px">
+                    <!-- <span class="number" id="firstNumber">0</span> -->
+                    <input type="text" class="number" id="firstNumber">
+                </div>
+                <div class="adding">
+                    <span class="operator">+</span>
+                </div>
+                <div class="second__number">
+                    <img class="image" src="flower.png" alt="" width="300px" height="300px">
+                    <!-- <span class="number" id="secondNumber">0</span> -->
+                    <input type="text" class="number" id="secondNumber">
+                </div>
+                <div class="equal">
+                    <span class="operator">=</span>
+                </div>
+                <div class="answer">
+                    <img class="image" src="flower.png" alt="" width="300px" height="300px">
+                    <input type="text" id="answerInput" autocomplete="off" class="number"></div>
             </div>
-            <div class="equal">
-                <span class="operator">=</span>
-            </div>
-            <div class="answer">
-                <img class="image" src="flower.png" alt="" width="300px" height="300px">
-                <input type="text" id="answerInput" autocomplete="off" class="number"></div>
-        </div>
-        <div class="check">
-            <button id="checkButton" type="button">
+
+
+            <div class="buttons">
+
+
+                <div class="check">
+                    <button id="checkButton" type="button">
                     CHECK
                 </button>
-        </div>
-        <div class="stars" id="stars">
-            <div class="star one" id="star__one">
-            </div>
-            <div class="star two" id="star__two">
-            </div>
-            <div class="star three" id="star__three">
-            </div>
-            <div class="star four" id="star__four">
-            </div>
-            <div class="star five" id="star__five">
-            </div>
-        </div>
-        <!-- <div class="top__score">
-            <h2>Stage-1</h2>
-        </div> -->
+                </div>
+                <div class="reset">
+                    <button id="resetButton" type="button">
+                RESET
+            </button>
+                </div>
 
-          </div>
-    </div>
+            </div>
+
+            <div class="stars" id="stars">
+                <div class="star one" id="star__one">
+                </div>
+                <div class="star two" id="star__two">
+                </div>
+                <div class="star three" id="star__three">
+                </div>
+                <div class="star four" id="star__four">
+                </div>
+                <div class="star five" id="star__five">
+                </div>
+            </div>
+
+            <div class="numbers">
+                <div class="one digit">1</div>
+                <div class="two digit">2</div>
+                <div class="three digit">3</div>
+                <div class="four digit ">4</div>
+                <div class="five digit">5</div>
+                <div class="six digit">6</div>
+                <div class="seven digit">7</div>
+                <div class="eight digit">8</div>
+                <div class="nine digit">9</div>
+                <div class="null digit">0</div>
+            </div>
+
+
+
+        </div>
     </div>
 
+    </div>
     </div>
     <script src="main.js "></script>
 </body>
