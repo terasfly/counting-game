@@ -88,7 +88,7 @@ const digitElements = document.querySelectorAll('.digit');
 digitElements.forEach(element => {
     element.addEventListener('click', (event) => {
         const number = event.target.textContent.trim()
-        answerInput.value = +number
+        answerInput.value +=number
     })
 });
 
