@@ -9,6 +9,9 @@ const topStage = document.querySelector('.top__stage');
 const resetButton = document.getElementById('resetButton');
 const game = document.querySelector('.game');
 
+const levelsColor = document.querySelector('.game__levels-color')
+
+
 // const digit = document.querySelectorAll('.digit')
 
 // Čia nustatomi pradiniai kintamieji žaidimo logikai.
@@ -16,7 +19,7 @@ let first = 0; // Pirmas skaičius sudėčiai
 let second = 0; // Antras skaičius sudėčiai
 let correctAnswers = 0; // Teisingų atsakymų skaičius
 let level = 1; // Dabartinis žaidimo lygis
-const levelUp = 4; // Naudojamas apskaičiuoti skaičių diapazoną kiekviename lygyje
+const levelUp = 3; // Naudojamas apskaičiuoti skaičių diapazoną kiekviename lygyje
 
 // Šis objektas susieja kiekvieną lygį su fono paveikslėliu.
 const backgroundImages = {
@@ -29,7 +32,8 @@ const backgroundImages = {
 };
 
 // Gauna aukščiausią pasiektą lygį iš naršyklės atminties (localStorage) ir atvaizduoja jį.
-const maxLevel = localStorage.getItem('maxLevel') || 1;
+const maxLevel = parseInt(localStorage.getItem('maxLevel')) || 1;
+
 topStage.textContent = maxLevel;
 
 // Ši funkcija išsaugo naują aukščiausią pasiektą lygį, jei jis yra didesnis už ankstesnį.
@@ -44,12 +48,15 @@ function saveMaxLevel(newLevel) {
 // Ši funkcija keičia žaidimo lygį, atnaujina vartotojo sąsają ir iškviečia kitas funkcijas žaidimo būsenai atnaujinti.
 function changeLevel(newLevel) {
     level = newLevel;
+    // level.style.color = 'red'
     document.body.className = `level-${level}`;
     gameLevels.textContent = `Level-${level}`;
     saveMaxLevel(newLevel);
     resetGame();
     updateBackgroundImage();
+    console.log(levelsColor); // Patikrinkime, ar elementas vis dar yra
 }
+// levelsColor.style.color = 'red'
 
 // Ši funkcija generuoja atsitiktinį pirmą skaičių pagal dabartinį lygį.
 function randomFirstNumber() {
@@ -88,7 +95,7 @@ const digitElements = document.querySelectorAll('.digit');
 digitElements.forEach(element => {
     element.addEventListener('click', (event) => {
         const number = event.target.textContent.trim()
-        answerInput.value +=number
+        answerInput.value += number
     })
 });
 
@@ -101,9 +108,9 @@ function checkAnswer() {
     if (userAnswer === correctAnswer) {
         generateNumbers();
         answerInput.value = '';
-        checkButton.style.background = 'green';
+        // checkButton.style.background = 'green';
         addStar();
-        checkButton.style.color = 'yellow';
+        checkButton.style.backgroundColor = 'yellow';
     } else {
         checkButton.style.background = 'red';
         checkButton.style.color = 'white';
@@ -164,7 +171,7 @@ function resetGame() {
 function updateBackgroundImage() {
     game.style.backgroundImage = `url('${backgroundImages[level]}')`;
     game.style.width = '100%'
-    game.style.height = '100%'
+    game.style.height = '100vh'
 }
 
 // Šis įvykių klausytojas užtikrina, kad į atsakymo laukelį būtų įvedami tik skaičiai.
