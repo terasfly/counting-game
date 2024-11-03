@@ -1,4 +1,4 @@
-// Šios eilutės nustato kintamuosius, kurie susieja JavaScript kodą su HTML elementais.
+// These lines set variables that link the JavaScript code to HTML elements.
 const firstNumber = document.getElementById('firstNumber');
 const secondNumber = document.getElementById('secondNumber');
 const answerInput = document.getElementById('answerInput');
@@ -11,17 +11,16 @@ const game = document.querySelector('.game');
 
 const levelsColor = document.querySelector('.game__levels-color')
 
-
 // const digit = document.querySelectorAll('.digit')
 
-// Čia nustatomi pradiniai kintamieji žaidimo logikai.
-let first = 0; // Pirmas skaičius sudėčiai
-let second = 0; // Antras skaičius sudėčiai
-let correctAnswers = 0; // Teisingų atsakymų skaičius
-let level = 1; // Dabartinis žaidimo lygis
-const levelUp = 4; // Naudojamas apskaičiuoti skaičių diapazoną kiekviename lygyje
+// These variables define the initial settings for game logic.
+let first = 0; // First number for addition
+let second = 0; // Second number for addition
+let correctAnswers = 0; // Count of correct answers
+let level = 1; // Current game level
+const levelUp = 3; // Used to calculate the number range for each level
 
-// Šis objektas susieja kiekvieną lygį su fono paveikslėliu.
+// This object associates each level with a background image.
 const backgroundImages = {
     1: 'backgroundWebP.webp',
     2: 'loly.png',
@@ -31,12 +30,12 @@ const backgroundImages = {
     6: 'planets.png'
 };
 
-// Gauna aukščiausią pasiektą lygį iš naršyklės atminties (localStorage) ir atvaizduoja jį.
+// Retrieves the highest achieved level from browser memory (localStorage) and displays it.
 const maxLevel = parseInt(localStorage.getItem('maxLevel')) || 1;
 
 topStage.textContent = maxLevel;
 
-// Ši funkcija išsaugo naują aukščiausią pasiektą lygį, jei jis yra didesnis už ankstesnį.
+// This function saves the new highest level achieved, if it is greater than the previous one.
 function saveMaxLevel(newLevel) {
     const maxLevel = localStorage.getItem('maxLevel') || 1;
     if (newLevel > maxLevel) {
@@ -45,7 +44,7 @@ function saveMaxLevel(newLevel) {
     }
 }
 
-// Ši funkcija keičia žaidimo lygį, atnaujina vartotojo sąsają ir iškviečia kitas funkcijas žaidimo būsenai atnaujinti.
+// This function changes the game level, updates the user interface, and calls other functions to update the game state.
 function changeLevel(newLevel) {
     level = newLevel;
     // level.style.color = 'red'
@@ -54,11 +53,11 @@ function changeLevel(newLevel) {
     saveMaxLevel(newLevel);
     resetGame();
     updateBackgroundImage();
-    console.log(levelsColor); // Patikrinkime, ar elementas vis dar yra
+    console.log(levelsColor); // Let's check if the element still exists
 }
 // levelsColor.style.color = 'red'
 
-// Ši funkcija generuoja atsitiktinį pirmą skaičių pagal dabartinį lygį.
+// This function generates a random first number according to the current level.
 function randomFirstNumber() {
     let min = (level - 1) * levelUp + 1;
     let max = level * levelUp;
@@ -67,7 +66,7 @@ function randomFirstNumber() {
     firstNumber.value = first;
 }
 
-// Ši funkcija generuoja atsitiktinį antrą skaičių pagal dabartinį lygį.
+// This function generates a random second number according to the current level.
 function randomSecondNumber() {
     let min = (level - 1) * levelUp + 1;
     let max = level * levelUp;
@@ -76,19 +75,17 @@ function randomSecondNumber() {
     secondNumber.value = second;
 }
 
-// Ši funkcija iškviečia abi ankstesnes funkcijas, kad sugeneruotų du skaičius.
+// This function calls both previous functions to generate two numbers.
 function generateNumbers() {
     randomFirstNumber();
     randomSecondNumber();
 }
 
-// Iškviečiama iš karto, kad pradėtų žaidimą.
+// Called immediately to start the game.
 generateNumbers();
 
-// Ši funkcija tikrina vartotojo atsakymą. Jei atsakymas teisingas, ji atnaujina žaidimą ir prideda žvaigždutę. 
-// Jei neteisingas, ji pakeičia mygtuko spalvą į raudoną.
-
-
+// This function checks the user's answer. If the answer is correct, it updates the game and adds a star.
+// If the answer is incorrect, it changes the button color to red.
 
 const digitElements = document.querySelectorAll('.digit');
 
@@ -98,9 +95,6 @@ digitElements.forEach(element => {
         answerInput.value += number
     })
 });
-
-
-
 
 function checkAnswer() {
     let userAnswer = parseInt(answerInput.value);
@@ -126,13 +120,11 @@ function checkAnswer() {
 //         const text = Number(element.textContent.trim())
 //         console.log(text)
 
-
 //     });
-
 // }
 // addAnswer()
-// Ši funkcija prideda žvaigždutę už kiekvieną teisingą atsakymą. 
-// Kai surenkamos visos žvaigždutės, ji perkelia žaidėją į kitą lygį arba baigia žaidimą.
+// This function adds a star for each correct answer.
+// When all stars are collected, it moves the player to the next level or ends the game.
 function addStar() {
     if (correctAnswers < stars.length) {
         const starImage = document.createElement('img');
@@ -154,7 +146,7 @@ function addStar() {
     }
 }
 
-// Ši funkcija atstato žaidimą į pradinę būseną: išvalo žvaigždutes, sugeneruoja naujus skaičius ir atnaujina vartotojo sąsają.
+// This function resets the game to its initial state: clears stars, generates new numbers, and updates the user interface.
 function resetGame() {
     correctAnswers = 0;
     for (let i = 0; i < stars.length; i++) {
@@ -167,22 +159,22 @@ function resetGame() {
     updateBackgroundImage();
 }
 
-// Ši funkcija atnaujina žaidimo fono paveikslėlį pagal dabartinį lygį.
+// This function updates the game background image according to the current level.
 function updateBackgroundImage() {
     game.style.backgroundImage = `url('${backgroundImages[level]}')`;
     game.style.width = '100%'
     game.style.height = '100vh'
 }
 
-// Šis įvykių klausytojas užtikrina, kad į atsakymo laukelį būtų įvedami tik skaičiai.
+// This event listener ensures that only numbers are entered in the answer input field.
 answerInput.addEventListener('input', function(e) {
     e.target.value = e.target.value.replace(/[^0-9]/g, '');
 });
 
-// Šis įvykių klausytojas iškviečia checkAnswer funkciją, kai paspaudžiamas tikrinimo mygtukas.
+// This event listener calls the checkAnswer function when the check button is clicked.
 checkButton.addEventListener('click', checkAnswer);
 
-// Šis įvykių klausytojas visiškai atstato žaidimą ir išvalo išsaugotą aukščiausią lygį, kai paspaudžiamas atstatymo mygtukas.
+// This event listener completely resets the game and clears the saved highest level when the reset button is clicked.
 resetButton.addEventListener('click', function() {
     localStorage.removeItem('maxLevel');
     topStage.textContent = 1;
