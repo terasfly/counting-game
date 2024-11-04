@@ -11,8 +11,6 @@ const game = document.querySelector('.game');
 
 const levelsColor = document.querySelector('.game__levels-color')
 
-// const digit = document.querySelectorAll('.digit')
-
 // These variables define the initial settings for game logic.
 let first = 0; // First number for addition
 let second = 0; // Second number for addition
@@ -47,15 +45,12 @@ function saveMaxLevel(newLevel) {
 // This function changes the game level, updates the user interface, and calls other functions to update the game state.
 function changeLevel(newLevel) {
     level = newLevel;
-    // level.style.color = 'red'
     document.body.className = `level-${level}`;
     gameLevels.textContent = `Level-${level}`;
     saveMaxLevel(newLevel);
-    resetGame();
-    updateBackgroundImage();
-    console.log(levelsColor); // Let's check if the element still exists
+    resetGame(); // Reset game state
+    updateBackgroundImage(); // Update background based on new level
 }
-// levelsColor.style.color = 'red'
 
 // This function generates a random first number according to the current level.
 function randomFirstNumber() {
@@ -86,14 +81,13 @@ generateNumbers();
 
 // This function checks the user's answer. If the answer is correct, it updates the game and adds a star.
 // If the answer is incorrect, it changes the button color to red.
-
 const digitElements = document.querySelectorAll('.digit');
 
 digitElements.forEach(element => {
     element.addEventListener('click', (event) => {
-        const number = event.target.textContent.trim()
-        answerInput.value += number
-    })
+        const number = event.target.textContent.trim();
+        answerInput.value += number;
+    });
 });
 
 function checkAnswer() {
@@ -102,7 +96,6 @@ function checkAnswer() {
     if (userAnswer === correctAnswer) {
         generateNumbers();
         answerInput.value = '';
-        // checkButton.style.background = 'green';
         addStar();
         checkButton.style.backgroundColor = 'yellow';
     } else {
@@ -112,17 +105,6 @@ function checkAnswer() {
     }
 }
 
-// function addAnswer(event) {
-//     const digit = document.querySelectorAll('.digit')
-
-//     const clickNumber = Number(event.target)
-//     digit.forEach(element => {
-//         const text = Number(element.textContent.trim())
-//         console.log(text)
-
-//     });
-// }
-// addAnswer()
 // This function adds a star for each correct answer.
 // When all stars are collected, it moves the player to the next level or ends the game.
 function addStar() {
@@ -156,14 +138,13 @@ function resetGame() {
     answerInput.value = '';
     checkButton.style.background = '';
     checkButton.style.color = '';
-    updateBackgroundImage();
 }
 
 // This function updates the game background image according to the current level.
 function updateBackgroundImage() {
     game.style.backgroundImage = `url('${backgroundImages[level]}')`;
-    game.style.width = '100%'
-    game.style.height = '100vh'
+    game.style.width = '100%';
+    game.style.height = '100vh';
 }
 
 // This event listener ensures that only numbers are entered in the answer input field.
@@ -179,5 +160,5 @@ resetButton.addEventListener('click', function() {
     localStorage.removeItem('maxLevel');
     topStage.textContent = 1;
     level = 1;
-    changeLevel(level);
+    changeLevel(level); // Resets everything and calls updateBackgroundImage based on level 1
 });
